@@ -13,8 +13,8 @@ mongoose.connect(
     config.mongoUri,
     {
         useNewUrlParser: true,
-        UseCreateIndex: true,
-        UseUnifiedTopology: true
+        useCreateIndex: true,
+        useUnifiedTopology: true
     }
 );
 mongoose.connection.on('error', () => {
