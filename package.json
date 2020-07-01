@@ -16,5 +16,10 @@
   "bugs": {
     "url": "https://github.com/lopes-leandro/learn-stack-mern/issues"
   },
-  "homepage": "https://github.com/lopes-leandro/learn-stack-mern#readme"
+  "homepage": "https://github.com/lopes-leandro/learn-stack-mern#readme",
+  "devDependencies": {
+    "@babel/core": "^7.10.4",
+    "@babel/preset-env": "^7.10.4",
+    "babel-loader": "^8.1.0"
+  }
 }
