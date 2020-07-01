@@ -6,6 +6,7 @@ import cors from 'cors';
 import helmet from 'helmet';
 import config from './../config/config';
 import mongoose from 'mongoose';
+import Template from './../template';
 
 const app = express();
 mongoose.Promise = global.Promise;
@@ -27,5 +28,9 @@ app.use(cookieParser());
 app.use(compress());
 app.use(helmet());
 app.use(cors());
+
+app.get('/', (req, res) => {
+    res.status(200).send(Template())
+});
 
 export default app;
