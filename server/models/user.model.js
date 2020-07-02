@@ -54,6 +54,15 @@ UserSchema.virtual('password')
     })
     .get(function(){
         return this._password
-    })
+    });
+
+UserSchema.path('hashed_password').validate(function(value) {
+    if (this._password && this._password.length < 6) {
+        this.invalidate('password', 'A senha deve ter pelo menos 6 caracteres.');
+    }
+    if (this.isNew && !this._password) {
+        this.invalidate('password', 'A senha é obrigatória.')
+    }
+}, null);
 
 export default mongoose.model('User', UserSchema);
