@@ -16,11 +16,13 @@ mongoose.connect(
     {
         useNewUrlParser: true,
         useCreateIndex: true,
-        useUnifiedTopology: true
+        useUnifiedTopology: true,
+        user: 'App',
+        pass: 'App'
     }
 );
 mongoose.connection.on('error', () => {
-    throw new Error(`Não é possível se conectar ao banco de dados: ${mongoUri}`)
+    throw new Error(`Não é possível se conectar ao banco de dados: ${config.mongoUri}`)
 });
 
 app.use(bodyParser.json());
