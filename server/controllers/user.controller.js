@@ -25,7 +25,7 @@ const list = async (req, res) => {
         });
     }
 }
-const userById = (req, res, next, id) => {
+const userById = async (req, res, next, id) => {
     try {
         let user = await User.findById(id);
         if (!user) {
@@ -41,7 +41,11 @@ const userById = (req, res, next, id) => {
         });
     }
 }
-const read = (req, res) => {}
+const read = (req, res) => {
+    req.profile.hashed_password = undefined;
+    req.profile.salt = undefined;
+    return res.json(req.profile);
+}
 const update = (req, res) => {}
 const remove = (req, res, next) => {}
 
