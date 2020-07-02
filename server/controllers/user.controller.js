@@ -1,6 +1,6 @@
 import User from './../models/user.model';
 import errorHandler from './../helpers/dbErrorHandler';
-import lodash from 'lodash';
+import lodash, { extend } from 'lodash';
 
 const create = async (req, res, next) => {
     const user = new User(req.body);
@@ -46,7 +46,23 @@ const read = (req, res) => {
     req.profile.salt = undefined;
     return res.json(req.profile);
 }
-const update = (req, res) => {}
+const update = async (req, res) => {
+    try {
+        let user = req.profile;
+        // mescla os dados do banco de dados com 
+        // os dados que vieram da request
+        user = extend(user, req.body); 
+        user.updated = Date.now();
+        await user.save();
+        user.hashed_password = undefined;
+        user.salt = undefined;
+        res.json(user);
+    } catch (err) {
+        return res.status(400).json({
+            error: errorHandler.getErrorMessage(err)
+        });
+    }
+}
 const remove = (req, res, next) => {}
 
 export default { create, list, userById, read, update, remove }
