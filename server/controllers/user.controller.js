@@ -63,6 +63,18 @@ const update = async (req, res) => {
         });
     }
 }
-const remove = (req, res, next) => {}
+const remove = async (req, res, next) => {
+    try {
+        let user = req.profile;
+        let deleteUser = await user.remove();
+        deleteUser.hashed_password = undefined;
+        deleteUser.salt = undefined;
+        res.status(200).json({message: 'Usuário removido com sucesso.'});
+    } catch (err) {
+        return res.status(400).json({
+            error: errorHandler.getErrorMessage(err)
+        });
+    }
+}
 
 export default { create, list, userById, read, update, remove }
