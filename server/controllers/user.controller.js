@@ -25,7 +25,22 @@ const list = async (req, res) => {
         });
     }
 }
-const userById = (req, res, next, id) => {}
+const userById = (req, res, next, id) => {
+    try {
+        let user = await User.findById(id);
+        if (!user) {
+            return res.status(400).json({
+                error: 'Usuário não encontrado.'
+            });
+        }
+        req.profile = user;
+        next();
+    } catch (err) {
+        return res.status(400).json({
+            error: 'Não foi possível recuperar o registro solicitado.'
+        });
+    }
+}
 const read = (req, res) => {}
 const update = (req, res) => {}
 const remove = (req, res, next) => {}
