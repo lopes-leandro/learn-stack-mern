@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import crypto from 'crypto';
 
 const UserSchema = new mongoose.Schema({
     name: {
@@ -24,5 +25,25 @@ const UserSchema = new mongoose.Schema({
     },
     salt: String
 });
+
+UserSchema.methods = {
+    authenticate: function (textoSimples) {
+        return this.encryptPassword(textoSimples) === this.hashed_password;
+    },
+    encryptPassword: function (password) {
+        if (!password) return '';
+        try {
+            return crypto
+                .createHmac('sha1', this.salt)
+                .update(password)
+                .digest('hex')
+        } catch (err) {
+            return '';
+        }
+    },
+    makeSalt: function () {
+        return Math.round((new Date().valueOf() * Math.random())) + '';
+    }
+}
 
 export default mongoose.model('User', UserSchema);
