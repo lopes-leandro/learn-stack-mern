@@ -11,11 +11,20 @@ const create = async (req, res, next) => {
         });
     } catch (err) {
         return res.status(400).json({
-            message: errorHandler.getErrorMessage(err)
+            error: errorHandler.getErrorMessage(err)
         });
     }
 }
-const list = (req, res) => {}
+const list = async (req, res) => {
+    try {
+        let users = await User.find().select('name email updated created');
+        res.json(users);
+    } catch (err) {
+        return res.status(400).json({
+            error: errorHandler.getErrorMessage(err)
+        });
+    }
+}
 const userById = (req, res, next, id) => {}
 const read = (req, res) => {}
 const update = (req, res) => {}
