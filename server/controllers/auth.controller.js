@@ -13,7 +13,7 @@ const signin = async (req, res) => {
             return res.status(401).send({error: 'Email e password não coincidem.'});
         }
         const token = jwt.sign({_id: user._id}, config.jwtSecret);
-        res.cookie('t', token, { expires: new Date() + 9999});
+        res.cookie('t', token, { expire: new Date() + 9999});
         return res.json({
             token,
             user: {
@@ -34,6 +34,7 @@ const signout = (req, res) => {
 
 const requireSignin = expressJWT({
     secret: config.jwtSecret,
+    algorithms: ['HS256'],
     userProperty: 'auth'
 });
 
