@@ -1,5 +1,6 @@
 import express from 'express';
 import userController from './../controllers/user.controller';
+import authController from './../controllers/auth.controller';
 
 const router = express.Router();
 
@@ -8,9 +9,9 @@ router.route('/api/v1/users')
     .post(userController.create)
 
 router.route('/api/v1/users/:userId')
-    .get(userController.read)
-    .put(userController.update)
-    .delete(userController.remove)
+    .get(authController.requireSignin,userController.read)
+    .put(authController.requireSignin, authController.hasAuthorization,userController.update)
+    .delete(authController.requireSignin, authController.hasAuthorization,userController.remove)
 
 // configuramos o router Express para lidar com parâmetro
 // em uma rota solicitada
