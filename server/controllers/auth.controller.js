@@ -1,6 +1,7 @@
 import User from './../models/user.model';
 import jwt from 'jsonwebtoken';
 import config from './../../config/config';
+import expressJWT from 'express-jwt';
 
 const signin = async (req, res) => {
     try {
@@ -25,11 +26,17 @@ const signin = async (req, res) => {
         return res.status(401).json({error: 'Não foi possível entrar.'});
     }
 }
+
 const signout = (req, res) => {
     res.clearCookie('t');
     return res.status(200).json({message: 'Desconectado'});
 }
-const requireSignin = {}
+
+const requireSignin = expressJWT({
+    secret: config.jwtSecret,
+    userProperty: 'auth'
+});
+
 const hasAuthorization = (req, res) => {}
 
 export default { signin, signout, requireSignin, hasAuthorization }
