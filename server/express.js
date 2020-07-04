@@ -9,8 +9,12 @@ import mongoose from 'mongoose';
 import Template from './../template';
 import userRoutes from './routes/user.routes';
 import authRoutes from './routes/auth.routes';
+import devBundle from './devBundle';
 
 const app = express();
+
+devBundle.compile(app);
+
 mongoose.Promise = global.Promise;
 mongoose.connect(
     config.mongoUri,
