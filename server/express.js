@@ -10,9 +10,12 @@ import Template from './../template';
 import userRoutes from './routes/user.routes';
 import authRoutes from './routes/auth.routes';
 import devBundle from './devBundle';
+import path from 'path';
 
+const CURRENT_WORKING_DIR = process.cwd(); 
 const app = express();
 
+// comentar para produção
 devBundle.compile(app);
 
 mongoose.Promise = global.Promise;
@@ -36,9 +39,9 @@ app.use(cookieParser());
 app.use(compress());
 app.use(helmet());
 app.use(cors());
-
 app.use('/', userRoutes);
 app.use('/', authRoutes);
+app.use('/dist', express.static(path.join(CURRENT_WORKING_DIR, 'dist')))
 
 app.get('/', (req, res) => {
     res.status(200).send(Template())
