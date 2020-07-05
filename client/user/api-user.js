@@ -1,4 +1,5 @@
 const { method } = require("lodash");
+const { json } = require("body-parser");
 
 const create = async (user) => {
     try {
@@ -44,3 +45,21 @@ const read = async(params, credentials, signal) => {
         console.log(err);        
     }
 }
+
+const update = async(params, credentials, user) => {
+    try {
+        let response = await fetch(`/api/v1/users/${params.userId}`, {
+            method: 'PUT',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Autorization': 'Bearer ' + credentials.t
+            },
+            body: JSON.stringify(user)
+        });
+        return await response.json();
+    } catch (err) {
+        console.log(err);        
+    }
+}
+
