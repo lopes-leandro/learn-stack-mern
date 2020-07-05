@@ -1,3 +1,5 @@
+const { method } = require("lodash");
+
 const create = async (user) => {
     try {
         let response = await fetch('/api/v1/users', {
@@ -19,6 +21,23 @@ const list = async (signal) => {
         let response = await fetch('/api/v1/users', {
             method: 'GET',
             signal: signal
+        });
+        return await response.json();
+    } catch (err) {
+        console.log(err);        
+    }
+}
+
+const read = async(params, credentials, signal) => {
+    try {
+        let response = await fetch(`/api/v1/users/${params.userId}`, {
+            method: 'GET',
+            signal: signal,
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Autorization': 'Bearer ' + credentials.t
+            }
         });
         return await response.json();
     } catch (err) {
