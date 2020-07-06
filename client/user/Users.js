@@ -1,14 +1,19 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import {
     makeStyles, 
     Paper, 
     List, 
-    ListItem, 
-    Link, 
-    ListItemAvatar, 
+    ListItem,
+    ListItemAvatar,
+    ListItemSecondaryAction, 
     ListItemText, 
     IconButton, 
+    Avatar,
     Typography } from "@material-ui/core";
+import {
+    ArrowForward, 
+    Person} from '@material-ui/icons'
+import {Link} from 'react-router-dom'
 import { list } from "./api-user";
 
 const useStyles = makeStyles(theme => ({
@@ -27,6 +32,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function Users() {
+    const classes = useStyles();
     const [users, setUsers] = useState([]);
 
     useEffect(() => {
