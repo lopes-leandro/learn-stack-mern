@@ -10,9 +10,8 @@ import {
     IconButton, 
     Avatar,
     Typography } from "@material-ui/core";
-import {
-    ArrowForward, 
-    Person} from '@material-ui/icons'
+import Person from "@material-ui/icons/Person";
+import ArrowForward from "@material-ui/icons/ArrowForward";
 import {Link} from 'react-router-dom'
 import { list } from "./api-user";
 
@@ -58,7 +57,7 @@ export default function Users() {
             <List dense>
                 {
                     users.map((item, i) => {
-                        return <Link to={"/user/ + item._id"} key={i}>
+                        return <Link to={`/user/${item._id}`} key={i}>
                             <ListItem button>
                                 <ListItemAvatar>
                                     <Avatar>
