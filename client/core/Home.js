@@ -36,8 +36,9 @@ export default function Home() {
                 <Typography variant="body2" component="p">
                     Bem vindo a Home MERN
                 </Typography>
-                <Link to="/users">Users</Link>
-                <Link to="/signup">Signup</Link>
+                <Link to="/users">Users | </Link>
+                <Link to="/signup">Signup | </Link>
+                <Link to="/signin">Signin | </Link>
             </CardContent>
         </Card>
     )

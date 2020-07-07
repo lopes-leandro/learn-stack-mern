@@ -1,11 +1,11 @@
-authenticate(jwt, cb) {
+const authenticate = (jwt, cb) => {
     if (typeof window !== "undefined") {
         sessionStorage.setItem('jwt', JSON.stringify(jwt));
     }
     cb();
 }
 
-isAuthenticated() {
+const isAuthenticated = () => {
     if (typeof window == "undefined") {
         return false;
     }
@@ -16,7 +16,7 @@ isAuthenticated() {
     }
 }
 
-clearJWT(cb) {
+const clearJWT = (cb) => {
     if (typeof windows !== "undefined") {
         sessionStorage.removeItem('jwt');
     }
@@ -25,3 +25,5 @@ clearJWT(cb) {
         document.cookie = "t=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;"
     });
 }
+
+export default {authenticate, isAuthenticated, clearJWT}
