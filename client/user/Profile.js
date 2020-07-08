@@ -19,6 +19,7 @@ import auth from "./../auth/auth-helper";
 import {
     Redirect, 
     Link} from "react-router-dom";
+import DeleteUser from './DeleteUser';
 
 
 const useStyles = makeStyles(theme => ({
@@ -88,6 +89,7 @@ export default function Profile({match}) {
                                         <Edit/>
                                     </IconButton>
                                 </Link>
+                                <DeleteUser userId={user._id}/>
                             </ListItemSecondaryAction>
                         )
                     }
