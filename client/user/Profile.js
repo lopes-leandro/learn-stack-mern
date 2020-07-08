@@ -1,31 +1,36 @@
 import React, { useState, useEffect } from 'react';
-import {Redirect, Link} from "react-router-dom";
 import {
     makeStyles, 
-    Typography, 
     Paper,
     List,
     ListItem,
     ListItemAvatar,
-    Avatar,
-    ListItemText,
-    Divider,
     ListItemSecondaryAction,
-    IconButton} from "@material-ui/core";
-import { Person, Edit } from "@material-ui/icons";
+    ListItemText,
+    Avatar,
+    IconButton,
+    Typography, 
+    Divider} from "@material-ui/core";
+import { 
+    Person, 
+    Edit } from "@material-ui/icons";
 import {read} from './api-user';
 import auth from "./../auth/auth-helper";
+import {
+    Redirect, 
+    Link} from "react-router-dom";
+
 
 const useStyles = makeStyles(theme => ({
     root: theme.mixins.gutters({
         maxWidth: 600,
         margin: 'auto',
-        marginTop: theme.spacing(5),
-        padding: theme.spacing(3)
+        marginTop: theme.spacing(3),
+        padding: theme.spacing(5)
     }),
     title: {
         marginTop: theme.spacing(3),
-        color: theme.palette.openTitle,
+        color: theme.palette.protectedTitle,
         // border: '1px black dashed'
     }
 }));
@@ -57,7 +62,7 @@ export default function Profile({match}) {
     }, [match.params.userId]);
 
     if (redirectToSignin) {
-        return (<Redirect to='/signin/' />)
+        return (<Redirect to='/signin' />)
     }
 
     return (
