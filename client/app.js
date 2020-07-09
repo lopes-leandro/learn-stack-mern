@@ -6,6 +6,13 @@ import MainRouter from './MainRouter';
 import theme from './theme';
 
 const App = () => {
+    React.useEffect(() => {
+        const jssStyles = document.querySelector('#jss-server-side');
+        if (jssStyles) {
+            jssStyles.parentNode.removeChild(jssStyles);
+        }
+    }, []);
+    
     return(
         <BrowserRouter>
             <ThemeProvider theme={theme}>
@@ -14,12 +21,5 @@ const App = () => {
         </BrowserRouter>
     );
 }
-
-React.useEffect(() => {
-    const jssStyles = document.querySelector('#jss-server-side');
-    if (jssStyles) {
-        jssStyles.parentNode.removeChild(jssStyles);
-    }
-}, []);
 
 export default hot(module)(App);

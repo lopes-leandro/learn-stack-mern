@@ -21,7 +21,7 @@ const Menu = withRouter(({history}) => (
     <AppBar position='static'>
         <Toolbar>
             <Typography variant='h6' color='inherit'>
-                Pullman.IO
+                Bike.IO
             </Typography>
             <Link to="/">
                 <IconButton aria-label='Home' style={isActive(history, "/")}>
@@ -34,10 +34,10 @@ const Menu = withRouter(({history}) => (
             {
                 !auth.isAuthenticated() && (<span>
                     <Link to="/signup">
-                        <Button style={isActive(history, "/signup")}>Sign Up</Button>
+                        <Button style={isActive(history, "/signup")}>Inscreva-se</Button>
                     </Link>
                     <Link to="/signin">
-                        <Button style={isActive(history, "/signin")}>Sign In</Button>
+                        <Button style={isActive(history, "/signin")}>Entrar</Button>
                     </Link>
                 </span>)
             }
@@ -50,7 +50,7 @@ const Menu = withRouter(({history}) => (
                         </Button>
                     </Link>
                     <Button color="inherit" onClick={() => {auth.clearJWT(() => history.push('/'))}} >
-                        Sign out
+                        Sair
                     </Button>
                 </span>)
             }

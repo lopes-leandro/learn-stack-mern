@@ -5,7 +5,7 @@ import {
     CardMedia, 
     CardContent, 
     Card} from "@material-ui/core";
-import unicornbikeImg from "./../assets/images/unicornbike.jpg";
+import unicornbikeImg from "./../assets/images/jannis-lucas.jpg";
 
 const useStyles = makeStyles(theme => ({
     card: {
@@ -27,13 +27,13 @@ export default function Home() {
     return (
         <Card className={classes.card}>
             <Typography variant="h6" className={classes.title}>
-                Home Page
+                Bike Lovers
             </Typography>
             <CardMedia className={classes.media} 
             image={unicornbikeImg} title="Unicorn Bicycle"/>
             <CardContent>
                 <Typography variant="body2" component="p">
-                    Bem vindo a Home MERN
+                <span>Photo by <a href="https://unsplash.com/@jannis_lucas?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Jannis Lucas</a> on <a href="https://unsplash.com/s/photos/bike-wallpaper?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>
                 </Typography>
             </CardContent>
         </Card>

@@ -78,7 +78,7 @@ export default function Signin(props) {
         <Card className={classes.card}>
             <CardContent>
                 <Typography variant="h6" className={classes.title}>
-                    Sign In
+                    Entrar
                 </Typography>
                 <TextField id="email" type="email" label="Email" 
                     className={classes.textField} 
@@ -106,7 +106,7 @@ export default function Signin(props) {
                     variant="contained" 
                     onClick={clickSubmit} 
                     className={classes.submit}>
-                    Submit
+                    Enviar
                 </Button>
             </CardActions>
         </Card>

@@ -73,7 +73,7 @@ export default function Signup() {
         <Card className={classes.card}>
             <CardContent>
                 <Typography variant="h6" className={classes.title}>
-                    Sign Up
+                    Inscreva-se
                 </Typography>
                 <TextField id="name" label="Name" 
                     className={classes.textField} 
@@ -107,7 +107,7 @@ export default function Signup() {
                     variant="contained" 
                     onClick={clickSubmit} 
                     className={classes.submit}>
-                    Submit
+                    Enviar
                 </Button>
             </CardActions>
         </Card>
@@ -121,7 +121,7 @@ export default function Signup() {
             <DialogActions>
                 <Link to="/signin">
                     <Button color="primary" autoFocus="autoFocus" variant="contained">
-                        Sign In
+                        Entrar
                     </Button>
                 </Link>
             </DialogActions>
