@@ -1,11 +1,10 @@
 import React from 'react';
-import { Link } from "react-router-dom";
+import { makeStyles } from "@material-ui/core/styles";
 import { 
     Typography, 
     CardMedia, 
     CardContent, 
-    Card, 
-    makeStyles} from "@material-ui/core";
+    Card} from "@material-ui/core";
 import unicornbikeImg from "./../assets/images/unicornbike.jpg";
 
 const useStyles = makeStyles(theme => ({
@@ -36,9 +35,6 @@ export default function Home() {
                 <Typography variant="body2" component="p">
                     Bem vindo a Home MERN
                 </Typography>
-                <Link to="/users">Users | </Link>
-                <Link to="/signup">Signup | </Link>
-                <Link to="/signin">Signin | </Link>
             </CardContent>
         </Card>
     )

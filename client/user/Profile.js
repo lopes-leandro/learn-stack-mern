@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { makeStyles } from "@material-ui/core/styles";
 import {
-    makeStyles, 
     Paper,
     List,
     ListItem,
@@ -48,18 +48,18 @@ export default function Profile({match}) {
         
         read({
             userId: match.params.userId
-        }, {
-            t: jwt.token
-        }, signal).then((data) => {
-            if (data && data.error) {
+        }, {t: jwt.token}, signal).then((data) => {
+            if (data && data.error) {                
                 setRedirectToSignin(true);
             } else {
                 setUser(data);
             }
-        });
+        })
+
         return function cleanup() {
             abortController.abort();
         }
+        
     }, [match.params.userId]);
 
     if (redirectToSignin) {

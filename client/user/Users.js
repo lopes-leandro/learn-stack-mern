@@ -1,32 +1,28 @@
 import React, { useState, useEffect } from "react";
+import { makeStyles } from "@material-ui/core/styles";
 import {
-    makeStyles, 
-    Paper, 
-    List, 
+    Paper,
+    List,
     ListItem,
     ListItemAvatar,
-    ListItemSecondaryAction, 
-    ListItemText, 
-    IconButton, 
+    ListItemSecondaryAction,
+    ListItemText,
+    IconButton,
     Avatar,
-    Typography } from "@material-ui/core";
-import Person from "@material-ui/icons/Person";
-import ArrowForward from "@material-ui/icons/ArrowForward";
-import {Link} from 'react-router-dom'
+    Typography
+} from "@material-ui/core";
+import { Person, ArrowForward } from "@material-ui/icons";
+import { Link } from 'react-router-dom'
 import { list } from "./api-user";
 
 const useStyles = makeStyles(theme => ({
-    card: {
-        maxWidth: 600,
-        margin: 'auto',
-        marginTop: theme.spacing(5)
-    },
+    root: theme.mixins.gutters({
+        padding: theme.spacing(1),
+        margin: theme.spacing(5)
+    }),
     title: {
-        padding: `${theme.spacing(3)}px ${theme.spacing(2.5)}px ${theme.spacing(2)}px`,
+        margin: `${theme.spacing(4)}px 0 ${theme.spacing(2)}px`,
         color: theme.palette.openTitle
-    },
-    media: {
-        minHeight: 400
     }
 }));
 
@@ -37,9 +33,10 @@ export default function Users() {
     useEffect(() => {
         const abortController = new AbortController();
         const signal = abortController.signal;
+
         list(signal).then((data) => {
             if (data && data.error) {
-                console.log(data.error);                
+                console.log(data.error);
             } else {
                 setUsers(data);
             }
@@ -47,7 +44,7 @@ export default function Users() {
         return function cleanup() {
             abortController.abort();
         }
-    },[]);
+    }, []);
 
     return (
         <Paper className={classes.root} elevation={4}>
@@ -61,13 +58,13 @@ export default function Users() {
                             <ListItem button>
                                 <ListItemAvatar>
                                     <Avatar>
-                                        <Person/>
+                                        <Person />
                                     </Avatar>
                                 </ListItemAvatar>
-                                <ListItemText primary={item.name}/>
+                                <ListItemText primary={item.name} />
                                 <ListItemSecondaryAction>
                                     <IconButton>
-                                        <ArrowForward/>
+                                        <ArrowForward />
                                     </IconButton>
                                 </ListItemSecondaryAction>
                             </ListItem>
