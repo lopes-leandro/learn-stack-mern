@@ -1,5 +1,5 @@
 {
-  "name": "learn-stack-mern",
+  "name": "learn-stack-mern-socialmedia",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,15 +9,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/lopes-leandro/learn-stack-mern.git"
+    "url": "git+https://github.com/lopes-leandro/learn-stack-mern-socialmedia.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/lopes-leandro/learn-stack-mern/issues"
+    "url": "https://github.com/lopes-leandro/learn-stack-mern-socialmedia/issues"
   },
-  "homepage": "https://github.com/lopes-leandro/learn-stack-mern#readme",
+  "homepage": "https://github.com/lopes-leandro/learn-stack-mern-socialmedia#readme",
   "devDependencies": {
     "@babel/core": "^7.10.4",
     "@babel/preset-env": "^7.10.4",
