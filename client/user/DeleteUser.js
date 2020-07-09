@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {
     IconButton, 
     Dialog, 
@@ -10,7 +10,8 @@ import {
 import { Delete } from "@material-ui/icons";
 import { remove } from './api-user';
 import auth from "./../auth/auth-helper";
-import { Redirect } from 'react-router';
+import { Redirect } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 export default function DeleteUser(props) {
     
@@ -24,7 +25,6 @@ export default function DeleteUser(props) {
     }
 
     const deleteAccount = () => {
-        const jwt = auth.isAuthenticated();
         remove({userId: props.userId}, {t: jwt.token}).then((data) => {
             if (data && data.error) {
                 console.log(data.error);                
@@ -64,4 +64,8 @@ export default function DeleteUser(props) {
                 </DialogActions>
             </Dialog>
         </span>)
+}
+
+DeleteUser.propTypes = {
+    userId: PropTypes.string.isRequired
 }

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { makeStyles } from "@material-ui/core/styles";
 import {
-    makeStyles, 
     Card, 
     CardContent, 
     CardActions, 
@@ -10,6 +10,7 @@ import {
     Icon} from "@material-ui/core";
 import { update, read } from './api-user';
 import auth from "./../auth/auth-helper";
+import { Redirect } from "react-router-dom";
 
 const useStyles = makeStyles(theme => ({
     card: {
@@ -72,16 +73,16 @@ export default function EditProfile({match}) {
             email: values.email || undefined,
             password: values.password || undefined
         }
-        update({userId: match.params.userId}, {t: jwt.token}, signal).then((data) => {
+        update({userId: match.params.userId}, {t: jwt.token}, user).then((data) => {
             if (data && data.error) {
                 setValues({...values, error: data.error});
             } else {
-                setValues({...values, userId: data_id, redirectToProfile: true});
+                setValues({...values, userId: data._id, redirectToProfile: true});
             }
         });
     }
 
-    const handlerChange = name => event => {
+    const handleChange = name => event => {
         setValues({...values, [name]: event.target.value});
     }
 
